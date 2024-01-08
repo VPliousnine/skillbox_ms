@@ -15,11 +15,12 @@ public class User {
     Integer avatar;
     String gender;
     String city;
+    Integer deleted;
 
     public User() {
     }
 
-    public User(String login, String name, String interests, String phone, Integer avatar, String gender, String city) {
+    public User(String login, String name, String interests, String phone, Integer avatar, String gender, String city, Integer deleted) {
         this.login = login;
         this.name = name;
         this.interests = interests;
@@ -27,6 +28,11 @@ public class User {
         this.avatar = avatar;
         this.gender = gender;
         this.city = city;
+        this.deleted = deleted;
+    }
+
+    public User(String login, String name, String interests, String phone, Integer avatar, String gender, String city) {
+        this(login, name, interests, phone, avatar, gender, city, 0);
     }
 
     @Override
@@ -39,6 +45,43 @@ public class User {
                 ", avatar=" + avatar +
                 ", gender='" + gender + '\'' +
                 ", city='" + city + '\'' +
+                ", deleted='" + deleted + '\'' +
                 '}';
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getInterests() {
+        return interests;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public Integer getAvatar() {
+        return avatar;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public Boolean isDeleted() {
+        return (deleted != null) && (deleted == 1);
+    }
+
+    public void setDeleted(Integer deleted) {
+        this.deleted = deleted == null ? 0 : deleted;
     }
 }

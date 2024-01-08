@@ -1,14 +1,13 @@
 package SkillBox.com.users.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "subscription", schema = "users_scheme")
+@Table(name = "subscriptions", schema = "users_scheme")
 public class Subscription {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
     String subscriber;
     String subscription;
@@ -19,6 +18,18 @@ public class Subscription {
     public Subscription(String subscriber, String subscription) {
         this.subscriber = subscriber;
         this.subscription = subscription;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getSubscriber() {
+        return subscriber;
+    }
+
+    public String getSubscription() {
+        return subscription;
     }
 
     @Override

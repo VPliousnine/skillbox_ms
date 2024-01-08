@@ -27,7 +27,7 @@ public class UsersApplication {
 			) {
 				System.out.println(user);
 			}
-			userRepository.deleteAll();
+//			userRepository.deleteAll();
 
 		};
 	}
