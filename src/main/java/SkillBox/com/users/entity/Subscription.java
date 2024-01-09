@@ -20,6 +20,12 @@ public class Subscription {
         this.subscription = subscription;
     }
 
+    public Subscription(long id, String subscriber, String subscription) {
+        this.id = id;
+        this.subscriber = subscriber;
+        this.subscription = subscription;
+    }
+
     public long getId() {
         return id;
     }

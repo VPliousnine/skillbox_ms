@@ -6,7 +6,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "users", schema = "users_scheme")
-public class User {
+public class User implements Cloneable {
     @Id
     String login;
     String name;
@@ -81,7 +81,23 @@ public class User {
         return (deleted != null) && (deleted == 1);
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public void setDeleted(Integer deleted) {
         this.deleted = deleted == null ? 0 : deleted;
+    }
+
+    public User clone() throws CloneNotSupportedException{
+        return (User) super.clone();
     }
 }
