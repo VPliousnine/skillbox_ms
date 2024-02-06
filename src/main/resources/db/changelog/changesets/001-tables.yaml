@@ -1,0 +1,54 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-0001
+      author: pva
+      changes:
+        - createTable:
+            tableName: users
+            schemaName: users_scheme
+            columns:
+              - column:
+                  name: login
+                  type: varchar
+                  constraints:
+                    primaryKey: true
+                    validateNullable: false
+              - column:
+                  name: name
+                  type: varchar
+                  constraints:
+                    validateNullable: false
+              - column:
+                  name: interests
+                  type: varchar
+              - column:
+                  name: phone
+                  type: varchar
+              - column:
+                  name: avatar
+                  type: integer
+  - changeSet:
+      id: 001-0002
+      author: pva
+      changes:
+        - createTable:
+            tableName: subscriptions
+            schemaName: users_scheme
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    validateNullable: false
+              - column:
+                  name: subscriber
+                  type: varchar
+                  constraints:
+                    validateNullable: false
+              - column:
+                  name: subscription
+                  type: varchar
+                  constraints:
+                    validateNullable: false

@@ -17,11 +17,11 @@ repositories {
 
  dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.postgresql:postgresql'
+	runtimeOnly 'org.postgresql:postgresql'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	 implementation 'org.jetbrains:annotations:24.0.0'
-	 implementation 'org.jetbrains:annotations:24.0.0'
-	 testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.jetbrains:annotations:24.0.0'
+	implementation 'org.liquibase:liquibase-core'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {

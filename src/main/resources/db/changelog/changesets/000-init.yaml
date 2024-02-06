@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 000-0001
+      author: pva
+      changes:
+        - sql:
+            sql: create schema if not exists users_scheme
+            dbms: postgresql

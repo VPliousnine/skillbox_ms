@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-0001
+      author: pva
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: subscriber
+            baseTableSchemaName: users_scheme
+            baseTableName: subscriptions
+            constraintName: fk_subscriber
+            referencedColumnNames: login
+            referencedTableSchemaName: users_scheme
+            referencedTableName: users
+  - changeSet:
+      id: 002-0002
+      author: pva
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: subscription
+            baseTableSchemaName: users_scheme
+            baseTableName: subscriptions
+            constraintName: fk_subscription
+            referencedColumnNames: login
+            referencedTableSchemaName: users_scheme
+            referencedTableName: users

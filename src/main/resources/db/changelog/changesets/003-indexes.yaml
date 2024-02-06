@@ -1,0 +1,61 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-001
+      author: pva
+      changes:
+        - addColumn:
+            schemaName: users_scheme
+            tableName: users
+            columns:
+              - column:
+                  name: gender
+                  type: varchar(1)
+              - column:
+                  name: city
+                  type: varchar
+  - changeSet:
+      id: 003-002
+      author: pva
+      changes:
+        - createIndex:
+            indexName: ix_users_gender
+            schemaName: users_scheme
+            tableName: users
+            columns:
+              - column:
+                  name: city
+  - changeSet:
+      id: 003-003
+      author: pva
+      changes:
+        - createIndex:
+            indexName: ix_users_gender_city
+            schemaName: users_scheme
+            tableName: users
+            columns:
+              - column:
+                  name: gender
+              - column:
+                  name: city
+  - changeSet:
+      id: 003-004
+      author: pva
+      changes:
+        - createIndex:
+            indexName: ix_subscriptions_subscription
+            schemaName: users_scheme
+            tableName: subscriptions
+            columns:
+              - column:
+                  name: subscription
+  - changeSet:
+      id: 003-005
+      author: pva
+      changes:
+        - createIndex:
+            indexName: ix_subscriptions_subscriber
+            schemaName: users_scheme
+            tableName: subscriptions
+            columns:
+              - column:
+                  name: subscriber
