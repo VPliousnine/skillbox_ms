@@ -24,7 +24,7 @@ class UserServiceTest {
         User user = new User(testLogin, "User", "none", "phone", null, "G", "City");
         Mockito.when(userRepository.save(user)).thenReturn(savedUser);
         // when
-        String result = userService.createUser(user);
+        String result = userService.create(user);
         // then
         Assertions.assertEquals(String.format("Пользователь %s добавлен", testLogin), result);
     }
@@ -35,7 +35,7 @@ class UserServiceTest {
         User user = new User(testLogin, "User", "none", "phone", null, "G", "City");
         Mockito.when(userRepository.save(user)).thenThrow(PersistenceException.class);
         // when
-        Executable executable = () -> userService.createUser(user);
+        Executable executable = () -> userService.create(user);
         // then
         Assertions.assertThrows(PersistenceException.class, executable);
     }
@@ -45,7 +45,7 @@ class UserServiceTest {
         // given
         Mockito.when(userRepository.findById(testLogin)).thenReturn(Optional.of(savedUser));
         // when
-        User result = userService.getUser(testLogin);
+        User result = userService.get(testLogin);
         // then
         Assertions.assertEquals(savedUser, result);
     }
@@ -55,7 +55,7 @@ class UserServiceTest {
         // given
         Mockito.when(userRepository.findById(testLogin)).thenThrow(PersistenceException.class);
         // when
-        Executable executable = () -> userService.getUser(testLogin);
+        Executable executable = () -> userService.get(testLogin);
         // then
         Assertions.assertThrows(PersistenceException.class, executable);
     }
@@ -70,7 +70,7 @@ class UserServiceTest {
         Mockito.when(userRepository.findById(testLogin)).thenReturn(Optional.of(savedUser));
         Mockito.when(userRepository.save(modifiedUser)).thenReturn(modifiedUser);
         // when
-        String result = userService.updateUser(modifiedUser, testLogin);
+        String result = userService.update(modifiedUser, testLogin);
         // then
         Assertions.assertEquals(String.format("Пользователь %s обновлён", testLogin), result);
     }
@@ -84,7 +84,7 @@ class UserServiceTest {
         Mockito.when(userRepository.findById(testLogin)).thenReturn(Optional.of(savedUser));
         Mockito.when(userRepository.save(modifiedUser)).thenReturn(modifiedUser);
         // when
-        String result = userService.deleteUser(testLogin);
+        String result = userService.delete(testLogin);
         // then
         assertEquals(String.format("Пользователь %s удалён", testLogin), result);
     }

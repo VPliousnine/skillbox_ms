@@ -8,9 +8,9 @@ public class Subscription {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
-    String subscriber;
-    String subscription;
+    private Long id;
+    private String subscriber;
+    private String subscription;
 
     public Subscription() {
     }
@@ -36,6 +36,18 @@ public class Subscription {
 
     public String getSubscription() {
         return subscription;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setSubscriber(String subscriber) {
+        this.subscriber = subscriber;
+    }
+
+    public void setSubscription(String subscription) {
+        this.subscription = subscription;
     }
 
     @Override

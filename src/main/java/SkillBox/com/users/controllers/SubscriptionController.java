@@ -18,31 +18,31 @@ public class SubscriptionController {
     }
 
     @PostMapping
-    String createSubscription(@RequestBody Subscription subscription) {
-        return subscriptionService.createSubscription(subscription);
+    public String create(@RequestBody Subscription subscription) {
+        return subscriptionService.create(subscription);
     }
 
     @GetMapping(path = "/{id}")
-    Subscription getSubscription(@PathVariable long id) {
-        return subscriptionService.getSubscription(id);
+    public Subscription get(@PathVariable long id) {
+        return subscriptionService.get(id);
     }
 
-    @PutMapping(path = "/id")
-    String updateSubscription(@RequestBody Subscription subscription, @PathVariable long id) {
+    @PutMapping(path = "/{id}")
+    public String update(@RequestBody Subscription subscription, @PathVariable long id) {
         if (subscription.getId() != id) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
-        return subscriptionService.updateSubscription(subscription, id);
+        return subscriptionService.update(subscription, id);
     }
 
-    @DeleteMapping(path = "/id")
-    String deleteSubscription(@PathVariable long id) {
-        return subscriptionService.deleteSubscription(id);
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable long id) {
+        return subscriptionService.delete(id);
     }
 
     @GetMapping
-    List<Subscription> getSubscriptions() {
-        return subscriptionService.getSubscriptions();
+    public List<Subscription> getAll() {
+        return subscriptionService.getAll();
     }
 
 }

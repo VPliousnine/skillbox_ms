@@ -77,12 +77,32 @@ public class User implements Cloneable {
         return city;
     }
 
+    public Integer getDeleted() {
+        return deleted;
+    }
+
     public Boolean isDeleted() {
         return (deleted != null) && (deleted == 1);
     }
 
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setInterests(String interests) {
+        this.interests = interests;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setAvatar(Integer avatar) {
+        this.avatar = avatar;
     }
 
     public void setGender(String gender) {

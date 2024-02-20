@@ -16,7 +16,7 @@ public class SubscriptionService {
         this.subscriptionRepository = subscriptionRepository;
     }
 
-    public String createSubscription(Subscription subscription) {
+    public String create(Subscription subscription) {
         String subscriber = subscription.getSubscriber();
         String subscriptionTo = subscription.getSubscription();
         if (subscriber.equals(subscriptionTo)) {
@@ -30,11 +30,11 @@ public class SubscriptionService {
         return String.format("Подписка пользователя %s на пользователя %s добавлена", savedSubscription.getSubscriber(), savedSubscription.getSubscription());
     }
 
-    public Subscription getSubscription(long id) {
+    public Subscription get(long id) {
         return subscriptionRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    public String updateSubscription(Subscription subscription, long id) {
+    public String update(Subscription subscription, long id) {
         if (!subscriptionRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
@@ -42,7 +42,7 @@ public class SubscriptionService {
         return String.format("Подписка %s обновлена", savedSubscription.getId());
     }
 
-    public String deleteSubscription(long id) {
+    public String delete(long id) {
         if (!subscriptionRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
@@ -50,8 +50,23 @@ public class SubscriptionService {
         return String.format("Подписка %s удалена", id);
     }
 
-    public List<Subscription> getSubscriptions() {
+    public List<Subscription> getAll() {
         return subscriptionRepository.findAll();
     }
 
+//    public static SubscriptionDto mapToDto(Subscription subscription) {
+//        SubscriptionDto subscriptionDto = new SubscriptionDto();
+//        subscriptionDto.setId(subscription.getId());
+//        subscriptionDto.setSubscriber(subscription.getSubscriber());
+//        subscriptionDto.setSubscription(subscription.getSubscription());
+//        return subscriptionDto;
+//    }
+//
+//    public static Subscription mapToEntity(SubscriptionDto subscriptionDto) {
+//        Subscription subscription = new Subscription();
+//        subscription.setId(subscriptionDto.getId());
+//        subscription.setSubscriber(subscriptionDto.getSubscriber());
+//        subscription.setSubscription(subscriptionDto.getSubscription());
+//        return subscription;
+//    }
 }

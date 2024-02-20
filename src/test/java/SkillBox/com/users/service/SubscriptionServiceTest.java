@@ -21,7 +21,7 @@ class SubscriptionServiceTest {
         Subscription subscription = new Subscription("user1", "user2");
         Mockito.when(subscriptionRepository.save(subscription)).thenReturn(savedSubscription);
         // when
-        String result = subscriptionService.createSubscription(subscription);
+        String result = subscriptionService.create(subscription);
         // then
         Assertions.assertEquals("Подписка пользователя user1 на пользователя user2 добавлена", result);
     }
@@ -31,7 +31,7 @@ class SubscriptionServiceTest {
         // given
         Mockito.when(subscriptionRepository.findById(testId)).thenReturn(Optional.of(savedSubscription));
         // when
-        Subscription result = subscriptionService.getSubscription(testId);
+        Subscription result = subscriptionService.get(testId);
         // then
         Assertions.assertEquals(savedSubscription, result);
     }
@@ -44,7 +44,7 @@ class SubscriptionServiceTest {
         Mockito.when(subscriptionRepository.existsById(testId)).thenReturn(true);
         Mockito.when(subscriptionRepository.save(modifiedSubscription)).thenReturn(modifiedSubscription);
         // when
-        String result = subscriptionService.updateSubscription(modifiedSubscription, testId);
+        String result = subscriptionService.update(modifiedSubscription, testId);
         // then
         Assertions.assertEquals(String.format("Подписка %s обновлена", testId), result);
     }
@@ -56,7 +56,7 @@ class SubscriptionServiceTest {
 
         Mockito.when(subscriptionRepository.existsById(testId)).thenReturn(true);
         // when
-        String result = subscriptionService.deleteSubscription(testId);
+        String result = subscriptionService.delete(testId);
         // then
         Assertions.assertEquals(String.format("Подписка %s удалена", testId), result);
     }

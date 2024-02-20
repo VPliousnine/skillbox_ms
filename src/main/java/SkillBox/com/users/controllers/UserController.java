@@ -18,30 +18,30 @@ public class UserController {
     }
 
     @PostMapping
-    String createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    String create(@RequestBody User user) {
+        return userService.create(user);
     }
 
     @GetMapping(path = "/{login}")
-    User getUser(@PathVariable String login) {
-        return userService.getUser(login);
+    User get(@PathVariable String login) {
+        return userService.get(login);
     }
 
-    @PutMapping(path = "/login")
-    String updateUser(@RequestBody User user, @PathVariable String login) {
+    @PutMapping(path = "/{login}")
+    String update(@RequestBody User user, @PathVariable String login) {
         if (!user.getLogin().equals(login)) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
-        return userService.updateUser(user, login);
+        return userService.update(user, login);
     }
 
-    @DeleteMapping(path = "/login")
-    String deleteUser(@PathVariable String login) {
-        return userService.deleteUser(login);
+    @DeleteMapping(path = "/{login}")
+    String delete(@PathVariable String login) {
+        return userService.delete(login);
     }
 
     @GetMapping
-    List<User> getUsers() {
-        return userService.getUsers();
+    List<User> getAll() {
+        return userService.getAll();
     }
 }
