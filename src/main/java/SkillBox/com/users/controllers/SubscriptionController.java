@@ -30,7 +30,7 @@ public class SubscriptionController {
     @PutMapping(path = "/{id}")
     public String update(@RequestBody Subscription subscription, @PathVariable long id) {
         if (subscription.getId() != id) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         return subscriptionService.update(subscription, id);
     }

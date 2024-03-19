@@ -20,7 +20,7 @@ public class SubscriptionService {
         String subscriber = subscription.getSubscriber();
         String subscriptionTo = subscription.getSubscription();
         if (subscriber.equals(subscriptionTo)) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Подписка пользователя на самого себя невозможна");
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Подписка пользователя на самого себя невозможна");
         }
         Subscription savedSubscription = subscriptionRepository.findBySubscriberAndSubscription(subscriber, subscriptionTo);
         if (savedSubscription != null) {

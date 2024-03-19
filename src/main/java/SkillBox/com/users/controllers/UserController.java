@@ -30,7 +30,7 @@ public class UserController {
     @PutMapping(path = "/{login}")
     String update(@RequestBody User user, @PathVariable String login) {
         if (!user.getLogin().equals(login)) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         return userService.update(user, login);
     }

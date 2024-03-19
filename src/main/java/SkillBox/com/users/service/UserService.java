@@ -19,7 +19,7 @@ public class UserService {
     public String create(User user) {
         String login = user.getLogin();
         if (userRepository.existsById(login)) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, String.format("Пользователь %s уже есть", login));
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, String.format("Пользователь %s уже есть", login));
         }
         User savedUser = userRepository.save(user);
         return String.format("Пользователь %s добавлен", savedUser.getLogin());
