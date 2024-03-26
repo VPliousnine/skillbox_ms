@@ -27,6 +27,8 @@ repositories {
 //	tests
 	 testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	 testImplementation 'org.liquibase:liquibase-core'
+	 testImplementation 'org.testcontainers:postgresql'
+	 testImplementation 'net.javacrumbs.json-unit:json-unit:3.2.7'
 //  integrity tests
 	 integTestImplementation 'org.springframework.cloud:spring-cloud-contract-wiremock:4.1.1'
 	 integTestImplementation 'org.projectlombok:lombok:1.18.26'
